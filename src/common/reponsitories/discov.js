@@ -1,9 +1,8 @@
 import * as firebase from 'firebase'
+import { database } from '../utils/firebase'
 
-export class Discov {
-  constructor (database, personalId = null) {
-    this.database = database
-
+class Discov {
+  constructor (personalId = null) {
     this.personalId = personalId
     this.name = null
     this.location = null
@@ -14,22 +13,28 @@ export class Discov {
   }
 
   async updateLocation (location) {
-    await this.database.ref(`/discov/${this.personalId}`).set({
+    if (!this.personalId) {
+      return false
+    }
+    await database.ref(`/discovs/${this.personalId}`).set(JSON.stringify({
+      location,
       name: this.name,
       id: this.personalId,
-      location,
       messages: this.messages,
       description: this.description,
       user: this.user,
       created: this.created
-    })
+    }))
   }
 
   async init (name = '', location = {}) {
-    if (this.database) {
+    if (database) {
       const discov = await localStorage.getItem('discovId')
       if (discov) {
-        await this.database.ref(`/discov/${this.discov}`).once('value').then((item) => {
+        console.log('discov', discov)
+        await database.ref(`/discovs/${discov}`).once('value').then((snapshot) => {
+          const item = JSON.parse(snapshot.val())
+          console.log('item>>>>>>>>>>', item)
           this.name = item.name || ''
           this.location = item.location || {}
           this.messages = item.messages || []
@@ -38,10 +43,10 @@ export class Discov {
           this.created = item.created || 0
         })
       } else {
-        this.personalId = this.database.ref('/discov').push().key
+        this.personalId = database.ref('/discovs').push().key
         const time = firebase.database.ServerValue.TIMESTAMP
         const user = navigator.userAgent
-        await this.database.ref(`/discov/${this.personalId}`).set({
+        await database.ref(`/discovs/${this.personalId}`).set(JSON.stringify({
           name,
           id: this.personalId,
           location,
@@ -49,7 +54,7 @@ export class Discov {
           description: '',
           user,
           created: time
-        })
+        }))
         this.name = name
         this.location = location
         this.messages = ''
@@ -61,3 +66,5 @@ export class Discov {
     }
   }
 }
+
+export default new Discov()

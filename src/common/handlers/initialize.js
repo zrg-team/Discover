@@ -1,10 +1,10 @@
 import I18n from 'i18n-js'
 import moment from 'moment'
 import { init as firebaseInit } from '../utils/firebase'
-import { setCurrentLocation, setDiscov } from '../actions'
+import { setCurrentLocation } from '../actions'
 import { setUserLanguage } from '../../modules/option/actions'
 import { DEFAULT_LANGUAGE } from '../configs'
-import { Discov } from '../reponsitories/discov'
+import discov from '../reponsitories/discov'
 
 I18n.defaultLocale = DEFAULT_LANGUAGE
 I18n.fallbacks = true
@@ -37,13 +37,11 @@ export default async function (dispatch, options = {}) {
     }
     I18n.locale = language
     moment.locale(language)
-    const database = await firebaseInit()
-    const user = new Discov(database)
-    await user.init()
+    await firebaseInit()
     if (navigator.geolocation) {
       timeoutLocation(dispatch)
     }
-    dispatch(setDiscov(user))
+    await discov.init()
   } catch (error) {
     moment.locale(DEFAULT_LANGUAGE)
     dispatch && dispatch(setUserLanguage(DEFAULT_LANGUAGE))

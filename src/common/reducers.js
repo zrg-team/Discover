@@ -55,12 +55,6 @@ const handlers = {
     ...{
       location: action.payload
     }
-  }),
-  [actions.setDiscov]: (state, action) => ({
-    ...state,
-    ...{
-      discov: action.payload
-    }
   })
 }
 

@@ -24,6 +24,7 @@ class Map extends Component {
         defaultZoom={18}
         defaultCenter={location}
         defaultOptions={{}}
+        center={location}
       >
         <Marker
           position={location}

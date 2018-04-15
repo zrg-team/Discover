@@ -1,9 +1,16 @@
 
 import { all, takeEvery, select, takeLatest } from 'redux-saga/effects'
-import { fetchStart, fetchSuccess, fetchFailure, loadStart, loadEnd } from './actions'
+import {
+  fetchStart,
+  fetchSuccess,
+  fetchFailure,
+  loadStart,
+  loadEnd,
+  setCurrentLocation } from './actions'
 import PageLoading from './components/wigets/PageLoading'
 import ProgressLoading from './components/wigets/ProgressLoading'
 import { moduleSagas } from '../modules'
+import discov from './reponsitories/discov'
 
 function * onFetchStart ({ payload: { config } }) {
   yield ProgressLoading.show()
@@ -51,10 +58,9 @@ function * watchLoadEnd () {
 }
 
 function * watchChangeLocation () {
-  yield takeLatest(loadEnd.toString(), function * () {
+  yield takeLatest(setCurrentLocation.toString(), function * () {
     const location = yield select(state => state.common.location)
-    const discov = yield select(state => state.common.discov)
-
+    console.log('>>>>>>>>discov', location)
     discov && discov.updateLocation(location)
   })
 }

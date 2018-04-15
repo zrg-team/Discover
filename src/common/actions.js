@@ -8,4 +8,3 @@ export const loadStart = createAction('LOADING_START')
 export const loadEnd = createAction('LOADING_END')
 
 export const setCurrentLocation = createAction('SET_CURRENT_LOCATION')
-export const setDiscov = createAction('SET_DISCOV')
