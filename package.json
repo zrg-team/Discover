@@ -29,7 +29,7 @@
     "redux-persist": "^5.9.1",
     "redux-saga": "^0.16.0"
   },
-  "homepage" : "http://zrg-team.github.io/discover",
+  "homepage" : "https://zrg-team.github.io/Discover/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
