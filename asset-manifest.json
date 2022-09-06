@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/Discover/static/js/app.c1ef9184.chunk.js",
-    "app.js.map": "/Discover/static/js/app.c1ef9184.chunk.js.map",
+    "app.js": "/Discover/static/js/app.bfa9de11.chunk.js",
+    "app.js.map": "/Discover/static/js/app.bfa9de11.chunk.js.map",
     "runtime~app.js": "/Discover/static/js/runtime~app.d6d07696.js",
     "runtime~app.js.map": "/Discover/static/js/runtime~app.d6d07696.js.map",
-    "static/js/2.278c5e00.chunk.js": "/Discover/static/js/2.278c5e00.chunk.js",
-    "static/js/2.278c5e00.chunk.js.map": "/Discover/static/js/2.278c5e00.chunk.js.map",
+    "static/js/2.8ec3f832.chunk.js": "/Discover/static/js/2.8ec3f832.chunk.js",
+    "static/js/2.8ec3f832.chunk.js.map": "/Discover/static/js/2.8ec3f832.chunk.js.map",
     "fonts/AntDesign.ttf": "/Discover/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/Discover/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/Discover/./fonts/Feather.ttf",
@@ -25,11 +25,11 @@
     "manifest.json": "/Discover/manifest.json",
     "serve.json": "/Discover/serve.json",
     "service-worker.js.map": "/Discover/service-worker.js.map",
-    "static/js/2.278c5e00.chunk.js.LICENSE.txt": "/Discover/static/js/2.278c5e00.chunk.js.LICENSE.txt"
+    "static/js/2.8ec3f832.chunk.js.LICENSE.txt": "/Discover/static/js/2.8ec3f832.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime~app.d6d07696.js",
-    "static/js/2.278c5e00.chunk.js",
-    "static/js/app.c1ef9184.chunk.js"
+    "static/js/2.8ec3f832.chunk.js",
+    "static/js/app.bfa9de11.chunk.js"
   ]
 }
